@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Post(models.Model):
@@ -19,3 +20,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+class User(AbstractUser):
+    bio = models.TextField(max_length=500, blank=True)
+    time_credits = models.DecimalField(max_digits=8, decimal_places=1, default=0)
+
+    def __str__(self):
+        return self.username

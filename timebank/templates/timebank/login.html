@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodi - Login</title>
+    <link rel="stylesheet" href="{% static 'timebank/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'timebank/css/auth.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">Nodi.</a>
+    </header>
+    
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2 class="auth-title">Login</h2>
+            
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_username">Username</label>
+                    {{ form.username }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_password">Password</label>
+                    {{ form.password }}
+                </div>
+                
+                {% if form.errors %}
+                <div class="auth-error">
+                    <p>Your username and password didn't match. Please try again.</p>
+                </div>
+                {% endif %}
+                
+                <button type="submit" class="auth-button">Login</button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

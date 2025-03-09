@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodi - Profile</title>
+    <link rel="stylesheet" href="{% static 'timebank/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">Nodi.</a>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search Nodi">
+        </div>
+        <div class="header-icons">
+            <div class="hours-counter">
+                <span class="Time-credit">{{ user.time_credits }}</span>
+                <img class="icon-button" src="{% static 'timebank/assets.pdf/hourglass.svg' %}" />
+                <div class="hours-tooltip">
+                    Total number of Hours helped the Community
+                </div>
+            </div>
+            <img class="icon-button" src="{% static 'timebank/assets.pdf/plus.svg' %}" height="20" width="20"/>
+            <img class="icon-button" src="{% static 'timebank/assets.pdf/chaticon.svg' %}" height="20" width="20" />
+            <img class="icon-button account-icon" src="{% static 'timebank/assets.pdf/account.svg' %}" height="20" width="20"/>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <div class="profile-container">
+            <h2>Your Profile</h2>
+            <div class="profile-info">
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Time Credits:</strong> {{ user.time_credits }}</p>
+            </div>
+            <div class="profile-actions">
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

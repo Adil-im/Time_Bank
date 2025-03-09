@@ -11,13 +11,17 @@
 
     <body>
        <header>
-        <a href="#" class="logo">Nodi.</a>
+        <a href="{% url 'home' %}" class="logo">Nodi.</a>
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search Nodi">
         </div>
         <div class="header-icons">
             <div class="hours-counter">
-                <span class="Time-credit"></span>
+                <span class="Time-credit">
+                    {% if user.is_authenticated %}
+                        {{ user.time_credits }}
+                    {% endif %}
+                </span>
                 <img class=icon-button src="static/timebank/assets.pdf/hourglass.svg" />
 
                 <div class="hours-tooltip">
@@ -26,7 +30,18 @@
             </div>
             <img class="icon-button" src="static/timebank/assets.pdf/plus.svg" height="20" width="20"/>
             <img class=icon-button src="static/timebank/assets.pdf/chaticon.svg" height="20" width="20" />
-            <img class=icon-button src="static/timebank/assets.pdf/account.svg" height="20" width="20"/>
+            <div class="account-dropdown">
+                <img class=icon-button src="{% static 'timebank/assets.pdf/account.svg' %}" height="20" width="20"/>
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}">Profile</a>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'signup' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
        </header>
 
@@ -38,11 +53,11 @@
                 <label for="catering" class="topic-label">Catering</label>
             </div>
             <div class="topic-item">
-                <input type="checkbox" id="educational" class="topic-checkbox" checked>
+                <input type="checkbox" id="educational" class="topic-checkbox" >
                 <label for="educational" class="topic-label">Education</label>
             </div>
             <div class="topic-item">
-                <input type="checkbox" id="Cleaning" class="topic-checkbox" checked>
+                <input type="checkbox" id="Cleaning" class="topic-checkbox" >
                 <label for="cleaning" class="topic-label">Cleaning</label>
             </div>
             <div class="topic-item">
@@ -106,6 +121,29 @@
          </form>
         </div>
     </div>
+    <script src="{% static 'js/posts.js' %}"></script>
+    <script>
+        // Dropdown functionality for account menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const accountDropdown = document.querySelector('.account-dropdown');
+            
+            accountDropdown.addEventListener('click', function(e) {
+                const dropdownContent = this.querySelector('.dropdown-content');
+                dropdownContent.classList.toggle('show');
+                e.stopPropagation();
+            });
+            
+            // Close dropdown when clicking outside
+            window.addEventListener('click', function() {
+                const dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
             
