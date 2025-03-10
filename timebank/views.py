@@ -11,7 +11,6 @@ from .Forms import SignUpForm, LoginForm
 def home(request):
         posts = Post.objects.all().order_by('-created_at')
         return render(request, 'timebank/main.html', {'posts': posts})
-
     
 def signup_view(request):
     if request.method == 'POST':
