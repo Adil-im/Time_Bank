@@ -16,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 20px;
     border-bottom: 1px solid #333;
     background-color: #111;
 }
@@ -51,8 +51,20 @@ header {
 
 .header-icons {
     display: flex;
+    align-items: center;
     gap: 30px;
+    
 }
+
+.hours-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    position: relative; /* For tooltip positioning */
+}
+
+
+
 
 .icon-button {
     width: 40px;
@@ -67,10 +79,7 @@ header {
     font-size: 18px;
 }
 
-.hours-counter {
-    position: relative;
-    cursor: pointer;
-}
+
 
 .hours-tooltip {
     display: none;
@@ -88,6 +97,13 @@ header {
 .hours-counter:hover .hours-tooltip {
     display: block;
 }
+
+.Time-credits {
+    font-size: 16px;
+    color: whitesmoke;  /* Ensure contrast */
+    margin-left: 5px;
+}
+
 
 /* Main content area */
 .content-container {

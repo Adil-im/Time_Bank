@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Post, User
 from django.contrib.auth.decorators import login_required
 from .Forms import SignUpForm, LoginForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -31,12 +32,19 @@ def login_view(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
+                
+                if user.time_credits == 0:
+                    user.time_credits = 10
+                    user.save()
+                    messages.success(request,"You have been allocated 10 Time Credits!")
                 login(request, user)
                 return redirect('home')
+            
+                
     else:
         form = LoginForm()
     return render(request, 'timebank/login.html', {'form': form})
 
 @login_required
 def profile_view(request):
-    return render(request, 'timebank/profile.html')
+    return render(request, 'timebank/profile.html', {'user': request.user})

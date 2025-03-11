@@ -17,9 +17,10 @@
         </div>
         <div class="header-icons">
             <div class="hours-counter">
-                <span class="Time-credit">
+                <span class="Time-credits">
                     {% if User.is_authenticated %} 
-                        {{ User.time_credits }}
+                        {{ User.formatted_time_credits }}
+                    
                     {% endif %}
                 </span>
                 <img class=icon-button src="static/timebank/assets.pdf/hourglass.svg" />
