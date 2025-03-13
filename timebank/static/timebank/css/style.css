@@ -8,7 +8,7 @@
 
 body {
     background-color: #000;
-    color: #fff;
+    
 }
 
 /* Header styles */
@@ -115,7 +115,7 @@ header {
 /* Topics sidebar */
 .topics-sidebar {
     width: 240px;
-    background-color: #111;
+    background-color: #000000;
     padding: 20px;
     border-right: 1px solid #333;
     overflow-y: auto;
@@ -129,6 +129,7 @@ header {
 .topic-item {
     margin-bottom: 10px;
     position: relative;
+    color: white;
 }
 
 .topic-checkbox {
@@ -141,7 +142,7 @@ header {
     background-color: #333;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition:  0.3s;
 }
 
 .topic-checkbox:checked + .topic-label {

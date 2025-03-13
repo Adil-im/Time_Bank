@@ -25,12 +25,14 @@
 
 .form-group {
     margin-bottom: 20px;
+    color: black;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #ccc;
+    color: black;
+    background-color: black;
 }
 
 .auth-input {
@@ -39,7 +41,7 @@
     border-radius: 6px;
     border: 1px solid #444;
     background-color: #333;
-    color: #fff;
+    color: black;
     font-size: 16px;
 }
 
@@ -54,7 +56,7 @@
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
-    transition: background-color 0.3s;
+    transition:  0.3s;
 }
 
 .auth-button:hover {
