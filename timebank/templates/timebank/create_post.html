@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'timebank/css/styles.css' %}">
+    <title>Create Post - Nodi</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">Nodi.</a>
+        <div class="header-icons">
+            <div class="hours-counter"> 
+                <span class="Time-credits">
+                    {% if user.is_authenticated %} 
+                        {{ user.formatted_time_credits }}
+                    {% endif %}
+                </span>
+                <img class="icon-button" src="{% static 'timebank/assets.pdf/hourglass.svg' %}" alt="Hours" height="20" width="20"/>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1 class="page-title">Create New Post</h1>
+        
+        <div class="form-container">
+            <form method="post" action="{% url 'create_post' %}" id="postForm">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_title" class="form-label">Title</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                    <p class="error-message">{{ form.title.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_description" class="form-label">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                    <p class="error-message">{{ form.description.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_topic" class="form-label">Topic</label>
+                    {{ form.topic }}
+                    {% if form.topic.errors %}
+                    <p class="error-message">{{ form.topic.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_hours_offered" class="form-label">Hours Offered/Requested</label>
+                    {{ form.hours_offered }}
+                    {% if form.hours_offered.errors %}
+                    <p class="error-message">{{ form.hours_offered.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="form-actions">
+                    <a href="{% url 'home' %}" class="cancel-link">Cancel</a>
+                    <button type="submit" class="form-submit submit-button">Create Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Client-side form validation
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            let valid = true;
+            const title = document.getElementById('id_title');
+            const description = document.getElementById('id_description');
+            
+            // Validate title
+            if (title.value.length < 5) {
+                document.querySelector('[for="id_title"] + .error-message').textContent = 'Title must be at least 5 characters long.';
+                title.classList.add('invalid');
+                valid = false;
+            } else {
+                title.classList.remove('invalid');
+            }
+            
+            // Validate description
+            if (description.value.length < 20) {
+                document.querySelector('[for="id_description"] + .error-message').textContent = 'Description must be at least 20 characters long.';
+                description.classList.add('invalid');
+                valid = false;
+            } else {
+                description.classList.remove('invalid');
+            }
+            
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -23,7 +23,7 @@ class Post(models.Model):
     
 class User(AbstractUser):
     bio = models.TextField(max_length=500, blank=True)
-    time_credits = models.DecimalField(max_digits=8, decimal_places=0, default=0)
+    time_credits = models.DecimalField(max_digits=8, decimal_places=0, default=10)
     @property
     def formatted_time_credits(self):
         return int(self.time_credits)  # Ensures no decimals

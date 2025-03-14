@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .models import Post, User
 from django.contrib.auth.decorators import login_required
-from .Forms import SignUpForm, LoginForm
+from .Forms import SignUpForm, LoginForm, PostForm
 from django.contrib import messages
 
 # Create your views here.
@@ -48,3 +48,19 @@ def login_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'timebank/profile.html', {'user': request.user})
+
+@login_required
+def create_post_view(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            # You can add user field here if you add it to Post model
+            # post.user = request.user
+            post.save()
+            messages.success(request, "Post created successfully!")
+            return redirect('home')
+    else:
+        form = PostForm()
+    
+    return render(request, 'timebank/create_post.html', {'form': form})

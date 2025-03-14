@@ -4,10 +4,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    color: white;
 }
 
 body {
     background-color: #000;
+    color: white;
     
 }
 
@@ -86,7 +88,8 @@ header {
     position: absolute;
     top: 45px;
     right: 0;
-    background-color: #222;
+    background-color: #303531;
+    color: white;
     padding: 10px;
     border-radius: 8px;
     width: 200px;
