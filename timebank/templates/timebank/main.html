@@ -19,7 +19,7 @@
             <div class="hours-counter">
                 <span class="Time-credits">
                     {% if User.is_authenticated %} 
-                        {{ User.formatted_time_credits }}
+                        {{ User.time_credits }}
                     {% endif %}
                 </span>
                 <img class=icon-button src="static/timebank/assets.pdf/hourglass.svg" />
@@ -28,8 +28,8 @@
                     Total number of Hours helped the Community
                 </div>
             </div>
-            <a href="{% url 'create_post' %}">
-                <img class="icon-button"  src="{static 'timebank/assets.pdf/plus.svg' %}" height="20" width="20"/>
+            <a  href="{% url 'create_post' %}" >
+                <img class="icon-button"  src="{% static 'timebank/assets.pdf/plus.svg' %}" height="20" width="20" alt="Plus Icon"/>
             </a>
             <img class=icon-button src="static/timebank/assets.pdf/chaticon.svg" height="20" width="20" />
             <div class="account-dropdown">

@@ -17,7 +17,9 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.time_credits = 10  # Modify the field before saving
+            user.save()  # Now save to the database
             login(request, user)
             return redirect('home')
     else:

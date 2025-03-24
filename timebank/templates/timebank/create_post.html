@@ -15,7 +15,7 @@
             <div class="hours-counter"> 
                 <span class="Time-credits">
                     {% if user.is_authenticated %} 
-                        {{ user.formatted_time_credits }}
+                        {{ user.time_credits }}
                     {% endif %}
                 </span>
                 <img class="icon-button" src="{% static 'timebank/assets.pdf/hourglass.svg' %}" alt="Hours" height="20" width="20"/>
