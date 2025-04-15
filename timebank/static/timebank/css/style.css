@@ -168,6 +168,16 @@ header {
     overflow-y: auto;
 }
 
+button.Contact{
+    color: black;
+    background-color: #42e142;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-block: none;
+    cursor: pointer;
+}
+
+
 .post {
     background-color: #222;
     border-radius: 8px;
@@ -251,4 +261,101 @@ header {
 .dropdown-content a:hover {
     background-color: #333;
     border-radius: 8px;
+}
+
+/* Profile Container Styles */
+
+
+.profile-container {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 30px;
+    margin: auto;
+    margin-bottom: 200px;
+    max-width: 600px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-container h2 {
+    color: #3f3;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.profile-info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 15px 20px;
+}
+
+.profile-info p {
+    display: contents;
+}
+
+.profile-info strong {
+    color: #ccc;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.profile-info span {
+    color: white;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.profile-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.logout-btn {
+    background-color: #3f3;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+}
+
+.logout-btn:hover {
+    background-color: #2d2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(63, 255, 63, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .profile-info {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .profile-info strong {
+        text-align: left;
+        padding-right: 0;
+        padding-top: 10px;
+        border-top: 1px solid #333;
+    }
+    
+    .profile-info strong:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
 }
