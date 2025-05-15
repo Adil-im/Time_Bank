@@ -4,7 +4,7 @@
 Nodi is a community time bank web application that makes it easy to share your skills and time with others. Whether you’re offering tutoring, home repairs, or creative workshops, Nodi connects you with people in your community who need your expertise and lets you earn time credits in return. It’s simple, fair, and designed to bring people closer together.
 
 
-!!!warning
+!!! warning WARNING
 🚧 Work in progress – expect changes and improvements!
 
 
