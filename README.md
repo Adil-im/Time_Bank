@@ -7,8 +7,7 @@ Nodi is a community time bank web application that makes it easy to share your s
 <<<<<<< HEAD
 >[!WARNING] 
 >🚧 Work in progress – expect changes and improvements!
-=======
->>>>>>> eb5da218bd83da963db6af0eb8b115ad8006527f
+
 
 
 ## 📦 Installation
